@@ -1,0 +1,37 @@
+{
+  "name": "@ieigen/zkzkvm-prover",
+  "version": "0.0.4",
+  "description": "Eigen Javascript/NodeJS prover",
+  "keywords": [
+    "zkp",
+    "plonk",
+    "privacy",
+    "blockchain"
+  ],
+  "scripts": {
+    "build": "wasm-pack build --target web",
+    "build_node": "wasm-pack build --target nodejs",
+    "test": "wasm-pack test --node && yarn mocha test"
+  },
+  "devDependencies": {
+    "@wasm-tool/wasm-pack-plugin": "1.5.0",
+    "html-webpack-plugin": "^5.3.2",
+    "text-encoding": "^0.7.0",
+    "webpack": "^5.49.0",
+    "webpack-cli": "^4.7.2",
+    "chai": "^4.3.0",
+    "mocha": "^3.2.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "author": "EigenLabs",
+  "main": "index.js",
+  "files": [
+    "pkg/*",
+    "client/*.js",
+    "index.js"
+  ],
+  "dependencies" : {
+    "circomlibjs": "^0.1.1",
+    "circomlib": "^2.0.2"
+  }
+}
