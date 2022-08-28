@@ -1,11 +1,11 @@
 #![cfg(target_arch = "wasm32")]
 use wasm_bindgen::prelude::*;
 
-use crate::{circom_circuit::CircomCircuit};
-use crate::reader;
-use crate::plonk;
-use crate::log;
+use crate::circom_circuit::CircomCircuit;
 use crate::console_log;
+use crate::log;
+use crate::plonk;
+use crate::reader;
 use std::io::{BufReader, BufWriter, Cursor};
 
 use crate::bellman_ce::{
@@ -43,8 +43,9 @@ pub fn prove(
 
     let witness_value: Vec<u8> = witness_js_objs.into_serde().unwrap();
     let witness_reader = BufReader::new(Cursor::new(witness_value));
-    let witness = reader::load_witness_from_bin_reader::<Bn256, BufReader<Cursor<Vec<u8>>>>(witness_reader)
-        .expect("read witness failed");
+    let witness =
+        reader::load_witness_from_bin_reader::<Bn256, BufReader<Cursor<Vec<u8>>>>(witness_reader)
+            .expect("read witness failed");
 
     let circuit = CircomCircuit {
         r1cs: r1cs,
@@ -54,12 +55,13 @@ pub fn prove(
     };
     let srs_monomial_form_value: Vec<u8> = srs_monomial_form_js_objs.into_serde().unwrap();
     let mut srs_monomial_form_reader = BufReader::new(Cursor::new(srs_monomial_form_value));
-    let srs_monomial_form = Crs::<Bn256, CrsForMonomialForm>::read(&mut srs_monomial_form_reader).expect("read key_monomial_form err");
+    let srs_monomial_form = Crs::<Bn256, CrsForMonomialForm>::read(&mut srs_monomial_form_reader)
+        .expect("read key_monomial_form err");
 
     let setup = crate::plonk::SetupForProver::prepare_setup_for_prover(
         circuit.clone(),
         srs_monomial_form,
-        None
+        None,
     )
     .expect("setup error");
 
@@ -96,7 +98,8 @@ pub fn export_verification_key(
 
     let srs_monomial_form_value: Vec<u8> = srs_monomial_form_js_objs.into_serde().unwrap();
     let mut srs_monomial_form_reader = BufReader::new(Cursor::new(srs_monomial_form_value));
-    let srs_monomial_form = Crs::<Bn256, CrsForMonomialForm>::read(&mut srs_monomial_form_reader).expect("read key_monomial_form err");
+    let srs_monomial_form = Crs::<Bn256, CrsForMonomialForm>::read(&mut srs_monomial_form_reader)
+        .expect("read key_monomial_form err");
 
     let setup = plonk::SetupForProver::prepare_setup_for_prover(
         circuit,
@@ -118,21 +121,16 @@ pub fn export_verification_key(
 }
 
 #[wasm_bindgen]
-pub fn verify(
-    vk_file_js_objs: JsValue,
-    proof_bin_js_objs: JsValue,
-    transcript: String
-) -> bool {
+pub fn verify(vk_file_js_objs: JsValue, proof_bin_js_objs: JsValue, transcript: String) -> bool {
     let vk_file_value: Vec<u8> = vk_file_js_objs.into_serde().unwrap();
     let mut reader = BufReader::new(Cursor::new(vk_file_value));
-    let vk = VerificationKey::<Bn256, PlonkCsWidth4WithNextStepParams>::read(&mut reader).expect("read vk err");
+    let vk = VerificationKey::<Bn256, PlonkCsWidth4WithNextStepParams>::read(&mut reader)
+        .expect("read vk err");
 
-    let proof_value : Vec<u8> = proof_bin_js_objs.into_serde().unwrap();
+    let proof_value: Vec<u8> = proof_bin_js_objs.into_serde().unwrap();
     let proof_reader = BufReader::new(Cursor::new(proof_value));
-    let proof = Proof::<Bn256, PlonkCsWidth4WithNextStepParams>::read(
-        proof_reader,
-    )
-    .expect("read proof err");
+    let proof = Proof::<Bn256, PlonkCsWidth4WithNextStepParams>::read(proof_reader)
+        .expect("read proof err");
 
     plonk::verify(&vk, &proof, &transcript).expect("failed to verify proof")
 }

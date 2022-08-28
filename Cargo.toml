@@ -1,5 +1,5 @@
 [package]
-name = "zkzkvm-prover"
+name = "plonkjs"
 version = "0.0.1"
 edition = "2021"
 
@@ -21,10 +21,10 @@ wasm-bindgen-test = "0.3"
 
 [dependencies]
 
-bellman_ce = { git = "https://github.com/matter-labs/bellman", default_features = false, branch = "beta", features = ["wasm", "plonk"] }
+bellman_ce = { git = "https://github.com/0xEigenLabs/bellman", default_features = false, branch = "beta", features = ["wasm", "plonk"] }
 #bellman_ce = { path = "../bellman", default_features = false, features = ["wasm", "plonk"] }
 #franklin-crypto = { path = "../franklin-crypto", features = [ "plonk" ], version = "0.0.5"}
-franklin-crypto = { git = "https://github.com/matter-labs/franklin-crypto", branch = "beta", features = [ "plonk" ], version = "0.0.5"}
+franklin-crypto = { git = "https://github.com/0xEigenLabs/franklin-crypto", branch = "beta", features = [ "plonk" ], version = "0.0.5"}
 
 hex-literal = "0.2.1"
 num-bigint = "0.3.3"

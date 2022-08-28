@@ -21,7 +21,6 @@ extern crate wasm_bindgen_test;
 #[cfg(target_arch = "wasm32")]
 use wasm_bindgen::prelude::*;
 
-
 #[cfg(target_arch = "wasm32")]
 #[wasm_bindgen]
 extern "C" {
