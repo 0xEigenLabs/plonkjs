@@ -1,1 +1,1 @@
-exports.prover=require("./pkg");
+exports.prover = require("./pkg");
