@@ -17,4 +17,4 @@ yarn build  #web
 ```
 
 ### latest publish
-* node :  "@ieigen/plonkjs-node:0.0.1",
+* node :  "@ieigen/plonkjs-node": "0.0.2"

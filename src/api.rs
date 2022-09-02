@@ -9,8 +9,8 @@ use crate::reader;
 use std::io::{BufReader, BufWriter, Cursor};
 
 use crate::bellman_ce::{
-    kate_commitment::{Crs, CrsForLagrangeForm, CrsForMonomialForm},
-    pairing::{bn256::Bn256, ff::PrimeField, Engine},
+    kate_commitment::{Crs, CrsForMonomialForm},
+    pairing::{bn256::Bn256},
     plonk::{
         better_cs::cs::PlonkCsWidth4WithNextStepParams,
         better_cs::keys::{Proof, VerificationKey},

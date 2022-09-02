@@ -21,10 +21,8 @@ wasm-bindgen-test = "0.3"
 
 [dependencies]
 
-bellman_ce = { git = "https://github.com/0xEigenLabs/bellman", default_features = false, branch = "beta", features = ["wasm", "plonk"] }
-#bellman_ce = { path = "../bellman", default_features = false, features = ["wasm", "plonk"] }
-#franklin-crypto = { path = "../franklin-crypto", features = [ "plonk" ], version = "0.0.5"}
-franklin-crypto = { git = "https://github.com/0xEigenLabs/franklin-crypto", branch = "beta", features = [ "plonk" ], version = "0.0.5"}
+bellman_ce = { git = "https://github.com/matter-labs/bellman", default_features = false, branch = "beta", features = ["wasm", "plonk"] }
+franklin-crypto = { git = "https://github.com/matter-labs/franklin-crypto", branch = "beta", features = [ "plonk" ], version = "0.0.5"}
 
 hex-literal = "0.2.1"
 num-bigint = "0.3.3"
@@ -34,18 +32,15 @@ serde_derive = "1.0"
 serde_json = "1.0"
 
 bellman_vk_codegen = { git = "https://github.com/0xEigenLabs/solidity_plonk_verifier", version = "0.2.0", features = ["wasm"]}
-#bellman_vk_codegen = { path = "../solidity_plonk_verifier/bellman_vk_codegen", version = "0.2.0", features = ["wasm"]}
 
-#zklib = { path = "../EigenZKit/zklib", default_features = false, features = ["wasm"] }
 zklib = { git = "https://github.com/0xEigenLabs/eigen-zkit", default_features = false, features = ["wasm"] }
 
-[dependencies.web-sys]
-version = "0.3.4"
-features = [
-  'Headers',
-  'Request',
-  'RequestInit',
-  'RequestMode',
-  'Response',
-  'Window',
-]
+## `wasm-opt` is on by default in for the release profile, but it can be
+## disabled by setting it to `false`
+#[package.metadata.wasm-pack.profile.release]
+#wasm-opt = ['-O4']
+#
+#[package.metadata.wasm-pack.profile.release.wasm-bindgen]
+#debug-js-glue = false
+#demangle-name-section = false
+#dwarf-debug-info = false
