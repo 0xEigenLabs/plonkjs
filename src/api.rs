@@ -10,7 +10,7 @@ use std::io::{BufReader, BufWriter, Cursor};
 
 use crate::bellman_ce::{
     kate_commitment::{Crs, CrsForMonomialForm},
-    pairing::{bn256::Bn256},
+    pairing::bn256::Bn256,
     plonk::{
         better_cs::cs::PlonkCsWidth4WithNextStepParams,
         better_cs::keys::{Proof, VerificationKey},

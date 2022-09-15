@@ -23,7 +23,6 @@ wasm-bindgen-test = "0.3"
 
 bellman_ce = { git = "https://github.com/matter-labs/bellman", default_features = false, branch = "beta", features = ["wasm", "plonk"] }
 franklin-crypto = { git = "https://github.com/matter-labs/franklin-crypto", branch = "beta", features = [ "plonk" ], version = "0.0.5"}
-
 hex-literal = "0.2.1"
 num-bigint = "0.3.3"
 num-traits = "0.2.8"
@@ -35,12 +34,7 @@ bellman_vk_codegen = { git = "https://github.com/0xEigenLabs/solidity_plonk_veri
 
 zklib = { git = "https://github.com/0xEigenLabs/eigen-zkit", default_features = false, features = ["wasm"] }
 
-## `wasm-opt` is on by default in for the release profile, but it can be
-## disabled by setting it to `false`
-#[package.metadata.wasm-pack.profile.release]
-#wasm-opt = ['-O4']
-#
-#[package.metadata.wasm-pack.profile.release.wasm-bindgen]
-#debug-js-glue = false
-#demangle-name-section = false
-#dwarf-debug-info = false
+[[bench]]
+name = "prove_and_verify"
+path = "tests/prove_and_verify.rs"
+harness = false

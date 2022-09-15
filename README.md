@@ -8,6 +8,7 @@ Javascript/NodeJS Plonk proving and verifiing library on [eigen-zkit](https://gi
 ```
 yarn build_node
 yarn test
+cargo flamegraph --test prove_and_verify  #perf
 ```
 
 ## compile
