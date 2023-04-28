@@ -2,7 +2,7 @@
 pub use bellman_ce;
 
 pub use franklin_crypto;
-pub use zklib::*;
+pub use plonky::*;
 
 mod api;
 pub use api::*;

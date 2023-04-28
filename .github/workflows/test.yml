@@ -41,4 +41,4 @@ jobs:
       - name: Install wasm-pack
         run: curl https://rustwasm.github.io/wasm-pack/installer/init.sh -sSf | sh
       - name: Start test
-        run: yarn build_node && yarn test
+        run: npm run build_node && npm run test
