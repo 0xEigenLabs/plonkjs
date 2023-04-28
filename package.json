@@ -11,7 +11,7 @@
   "scripts": {
     "build": "wasm-pack build --target web --release",
     "build_node": "wasm-pack build --target nodejs --release",
-    "test": "wasm-pack test --node && yarn mocha tests"
+    "test": "wasm-pack test --node && ./node_modules/.bin/mocha tests"
   },
   "devDependencies": {
     "@wasm-tool/wasm-pack-plugin": "1.5.0",

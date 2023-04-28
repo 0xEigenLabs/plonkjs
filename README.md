@@ -6,15 +6,15 @@ Javascript/NodeJS Plonk proving and verifiing library on [eigen-zkit](https://gi
 
 ## test
 ```
-yarn build_node
-yarn test
+npm run build_node
+npm run test
 cargo flamegraph --test prove_and_verify  #perf
 ```
 
 ## compile
 ```
-yarn build_node  #node
-yarn build  #web
+npm run build_node  #node
+npm run build  #web
 ```
 
 ### latest publish
