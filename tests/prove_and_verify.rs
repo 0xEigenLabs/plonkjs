@@ -34,16 +34,20 @@ fn test_prove_and_verify() {
         JsValue::from(wtns),
         JsValue::from(srs_monomial_form.clone()),
         String::from("keccak"),
-    );
+    )
+    .unwrap();
 
     let vk = plonkjs::export_verification_key(
         JsValue::from(srs_monomial_form),
         JsValue::from(circuit_file),
-    );
+    )
+    .unwrap();
 
     let verified_ok = plonkjs::verify(
         JsValue::from_serde(&vk.vk_bin).unwrap(),
         JsValue::from_serde(&proof.proof_bin).unwrap(),
-        String::from("keccak"));
+        String::from("keccak"),
+    )
+    .unwrap();
     assert!(verified_ok);
 }
