@@ -5,6 +5,7 @@ const fs = require("fs");
 const {prover} = require("../");
 
 describe("Plonk verifier test", function() {
+  //this.timeout(5000000);
   it("Should return true when proof is correct", async function() {
     let basePath = __dirname;
     let circuit_file = path.join(basePath, "multiplier.r1cs");
