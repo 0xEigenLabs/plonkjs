@@ -1,6 +1,6 @@
 # PlonkJS
 
-Javascript/NodeJS Plonk proving and verifiing library on [eigen-zkit](https://github.com/0xEigenLabs/eigen-zkit) and [bellman](https://github.com/matter-labs/bellman).
+Javascript/NodeJS Plonk library on [eigen-plonky](https://github.com/0xEigenLabs/eigen-zkvm/tree/main/plonky) and [bellman](https://github.com/matter-labs/bellman).
 
 # Usage
 
@@ -16,6 +16,3 @@ cargo flamegraph --test prove_and_verify  #perf
 npm run build_node  #node
 npm run build  #web
 ```
-
-### latest publish
-* node :  "@ieigen/plonkjs-node": "0.0.2"
