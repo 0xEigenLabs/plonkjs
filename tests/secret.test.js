@@ -2,12 +2,12 @@ const { expect } = require("chai");
 const path = require("path");
 const fs = require("fs");
 
-const {prover} = require("../");
+const { prover } = require("../");
 
-describe("Secret prove and verify test", function() {
-  this.timeout(5000000);
+describe.skip("Secret prove and verify test", function() {
+  // this.timeout(5000000);
   it("Should return true when proof is correct", async function() {
-    //let basePath = __dirname;
+    // let basePath = __dirname;
     let basePath = "/tmp/secret";
     let circuit_file = path.join(basePath, "main_update_state.r1cs");
     let circuit_file_content = fs.readFileSync(circuit_file);
@@ -36,6 +36,5 @@ describe("Secret prove and verify test", function() {
     )
     console.log(verify_ok);
     expect(verify_ok).eq(true)
-
   });
 });

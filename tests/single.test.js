@@ -2,10 +2,10 @@ const { expect } = require("chai");
 const path = require("path");
 const fs = require("fs");
 
-const {prover} = require("../");
+const { prover } = require("../");
 
 describe("Plonk verifier test", function() {
-  //this.timeout(5000000);
+  // this.timeout(5000000);
   it("Should return true when proof is correct", async function() {
     let basePath = __dirname;
     let circuit_file = path.join(basePath, "multiplier.r1cs");
@@ -35,6 +35,5 @@ describe("Plonk verifier test", function() {
     )
     console.log(verify_ok);
     expect(verify_ok).eq(true)
-
   });
 });
